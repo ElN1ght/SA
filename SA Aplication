@@ -1,0 +1,43 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    double hvalor, htrabalho, bsalario, irdesconto, inssdesconto, fgts, tdescontos, lsalario;
+
+    cout << "Insira o valor da sua hora: ";
+    cin >> hvalor;
+    cout << "Insira a quantidade de horas trabalhadas: ";
+    cin >> htrabalho;
+
+    bsalario = hvalor * htrabalho;
+
+    if (bsalario <= 900) {
+        irdesconto = 0;
+    } else if (bsalario <= 1500) {
+        irdesconto = bsalario * 0.05;
+    } else if (bsalario <= 2500) {
+        irdesconto = bsalario * 0.10;
+    } else {
+        irdesconto = bsalario * 0.20;
+    }
+
+    inssdesconto = bsalario * 0.10;
+
+    fgts = bsalario * 0.11;
+
+    tdescontos = irdesconto + inssdesconto;
+
+    lsalario = bsalario - tdescontos;
+
+    cout << fixed << setprecision(2);
+    cout << "Salario Bruto: R$ " << bsalario << endl;
+    cout << "(-) IR (" << (irdesconto / bsalario) * 100 << "%) : R$ " << irdesconto << endl;
+    cout << "(-) INSS (10%) : R$ " << inssdesconto << endl;
+    cout << "FGTS (11%) : R$ " << fgts << endl;
+    cout << "Total de descontos : R$ " << tdescontos << endl;
+    cout << "Salario Liquido : R$ " << lsalario << endl;
+
+    return 0;
+}
